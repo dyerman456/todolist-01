@@ -3,6 +3,7 @@ import {Button} from "./Button.tsx";
 type Props = {
     title: string
     tasks: Task[]
+    removeTask: Function
 }
 
 export type Task = {
@@ -11,7 +12,7 @@ export type Task = {
     isDone: boolean
 }
 
-export const Todolist = ({title, tasks}: Props) => {
+export const Todolist = ({title, tasks, removeTask}: Props) => {
     // const title = props.title
     // const tasks = props.tasks
 
@@ -33,7 +34,7 @@ export const Todolist = ({title, tasks}: Props) => {
             {tasks.map(task => {
                 return (
                     <li key={task.id}>
-                        <input type="checkbox" checked={task.isDone}/> <span>{task.title}</span>
+                        <input type="checkbox" checked={task.isDone}/> <span>{task.title}</span> <button onClick={ () => {removeTask(task.id)} }>x</button>
                     </li>
                 )
             })}
